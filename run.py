@@ -15,13 +15,18 @@ sys.path.insert(0, 'src')
 
 def main(targets):
     if "test" in targets:
-        metadata = make_dataset.read_fungi_data("data/metadata_fungi_HMS_1986samples.tsv")
-        feature_table = make_dataset.read_fungi_data("data/count_data_fungi_WIS_intersect_HMS_1986samples.tsv")
+        test_path_metadata = 'test/test_metadata.tsv'
+        test_path_fungi = 'test/test_fungi_data.tsv'
+
+        metadata = make_dataset.read_fungi_data(test_path_metadata)
+        feature_table = make_dataset.read_fungi_data(test_path_fungi)
         metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor')
+
         # X
         filtered_feature_table = build_features.relevant_feature_data(metadata_table,feature_table)
         # target - Y
         disease_types = build_features.disease_type_count(metadata_table)
+        
         # training model
         auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table,disease_types)
         
