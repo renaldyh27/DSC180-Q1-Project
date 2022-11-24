@@ -1,151 +1,151 @@
 disease_type	sampleid	sample_type
-Breast Invasive Carcinoma	1	Primary Tumor
-Thyroid Carcinoma	2	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	3	Primary Tumor
-Stomach Adenocarcinoma	4	Primary Tumor
-Stomach Adenocarcinoma	5	Primary Tumor
-Lung Adenocarcinoma	6	Primary Tumor
-Stomach Adenocarcinoma	7	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	8	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	9	Primary Tumor
-Lung Adenocarcinoma	10	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	11	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	12	Primary Tumor
-Breast Invasive Carcinoma	13	Primary Tumor
-Breast Invasive Carcinoma	14	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	15	Primary Tumor
+Bladder Urothelial Carcinoma	1	Primary Tumor
+Bladder Urothelial Carcinoma	2	Primary Tumor
+Thyroid Carcinoma	3	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	4	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	5	Primary Tumor
+Thyroid Carcinoma	6	Primary Tumor
+Bladder Urothelial Carcinoma	7	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	8	Primary Tumor
+Bladder Urothelial Carcinoma	9	Primary Tumor
+Breast Invasive Carcinoma	10	Primary Tumor
+Stomach Adenocarcinoma	11	Primary Tumor
+Bladder Urothelial Carcinoma	12	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	13	Primary Tumor
+Stomach Adenocarcinoma	14	Primary Tumor
+Bladder Urothelial Carcinoma	15	Primary Tumor
 Head and Neck Squamous Cell Carcinoma	16	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	17	Primary Tumor
+Thyroid Carcinoma	17	Primary Tumor
 Uterine Corpus Endometrial Carcinoma	18	Primary Tumor
-Lung Adenocarcinoma	19	Primary Tumor
-Stomach Adenocarcinoma	20	Primary Tumor
-Bladder Urothelial Carcinoma	21	Primary Tumor
-Stomach Adenocarcinoma	22	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	23	Primary Tumor
-Thyroid Carcinoma	24	Primary Tumor
+Thyroid Carcinoma	19	Primary Tumor
+Lung Adenocarcinoma	20	Primary Tumor
+Thyroid Carcinoma	21	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	22	Primary Tumor
+Thyroid Carcinoma	23	Primary Tumor
+Stomach Adenocarcinoma	24	Primary Tumor
 Head and Neck Squamous Cell Carcinoma	25	Primary Tumor
-Stomach Adenocarcinoma	26	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	27	Primary Tumor
-Thyroid Carcinoma	28	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	29	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	30	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	26	Primary Tumor
+Breast Invasive Carcinoma	27	Primary Tumor
+Breast Invasive Carcinoma	28	Primary Tumor
+Breast Invasive Carcinoma	29	Primary Tumor
+Thyroid Carcinoma	30	Primary Tumor
 Uterine Corpus Endometrial Carcinoma	31	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	32	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	33	Primary Tumor
-Breast Invasive Carcinoma	34	Primary Tumor
-Bladder Urothelial Carcinoma	35	Primary Tumor
-Lung Adenocarcinoma	36	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	37	Primary Tumor
+Bladder Urothelial Carcinoma	32	Primary Tumor
+Lung Adenocarcinoma	33	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	34	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	35	Primary Tumor
+Breast Invasive Carcinoma	36	Primary Tumor
+Breast Invasive Carcinoma	37	Primary Tumor
 Breast Invasive Carcinoma	38	Primary Tumor
-Breast Invasive Carcinoma	39	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	39	Primary Tumor
 Uterine Corpus Endometrial Carcinoma	40	Primary Tumor
-Bladder Urothelial Carcinoma	41	Primary Tumor
-Breast Invasive Carcinoma	42	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	41	Primary Tumor
+Thyroid Carcinoma	42	Primary Tumor
 Uterine Corpus Endometrial Carcinoma	43	Primary Tumor
-Bladder Urothelial Carcinoma	44	Primary Tumor
-Lung Adenocarcinoma	45	Primary Tumor
-Lung Adenocarcinoma	46	Primary Tumor
-Stomach Adenocarcinoma	47	Primary Tumor
-Thyroid Carcinoma	48	Primary Tumor
-Stomach Adenocarcinoma	49	Primary Tumor
-Stomach Adenocarcinoma	50	Primary Tumor
-Bladder Urothelial Carcinoma	51	Primary Tumor
-Stomach Adenocarcinoma	52	Primary Tumor
-Lung Adenocarcinoma	53	Primary Tumor
-Lung Adenocarcinoma	54	Primary Tumor
-Thyroid Carcinoma	55	Primary Tumor
-Bladder Urothelial Carcinoma	56	Primary Tumor
-Stomach Adenocarcinoma	57	Primary Tumor
-Bladder Urothelial Carcinoma	58	Primary Tumor
-Bladder Urothelial Carcinoma	59	Primary Tumor
-Lung Adenocarcinoma	60	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	61	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	62	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	63	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	64	Primary Tumor
-Stomach Adenocarcinoma	65	Primary Tumor
-Breast Invasive Carcinoma	66	Primary Tumor
-Stomach Adenocarcinoma	67	Primary Tumor
-Stomach Adenocarcinoma	68	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	69	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	70	Primary Tumor
-Breast Invasive Carcinoma	71	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	72	Primary Tumor
-Breast Invasive Carcinoma	73	Primary Tumor
-Lung Adenocarcinoma	74	Primary Tumor
-Lung Adenocarcinoma	75	Primary Tumor
-Thyroid Carcinoma	76	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	77	Primary Tumor
-Lung Adenocarcinoma	78	Primary Tumor
-Lung Adenocarcinoma	79	Primary Tumor
-Thyroid Carcinoma	80	Primary Tumor
-Stomach Adenocarcinoma	81	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	82	Primary Tumor
-Bladder Urothelial Carcinoma	83	Primary Tumor
+Thyroid Carcinoma	44	Primary Tumor
+Thyroid Carcinoma	45	Primary Tumor
+Breast Invasive Carcinoma	46	Primary Tumor
+Thyroid Carcinoma	47	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	48	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	49	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	50	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	51	Primary Tumor
+Bladder Urothelial Carcinoma	52	Primary Tumor
+Bladder Urothelial Carcinoma	53	Primary Tumor
+Thyroid Carcinoma	54	Primary Tumor
+Bladder Urothelial Carcinoma	55	Primary Tumor
+Lung Adenocarcinoma	56	Primary Tumor
+Breast Invasive Carcinoma	57	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	58	Primary Tumor
+Lung Adenocarcinoma	59	Primary Tumor
+Breast Invasive Carcinoma	60	Primary Tumor
+Lung Adenocarcinoma	61	Primary Tumor
+Lung Adenocarcinoma	62	Primary Tumor
+Stomach Adenocarcinoma	63	Primary Tumor
+Bladder Urothelial Carcinoma	64	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	65	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	66	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	67	Primary Tumor
+Thyroid Carcinoma	68	Primary Tumor
+Thyroid Carcinoma	69	Primary Tumor
+Bladder Urothelial Carcinoma	70	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	71	Primary Tumor
+Lung Adenocarcinoma	72	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	73	Primary Tumor
+Bladder Urothelial Carcinoma	74	Primary Tumor
+Bladder Urothelial Carcinoma	75	Primary Tumor
+Breast Invasive Carcinoma	76	Primary Tumor
+Breast Invasive Carcinoma	77	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	78	Primary Tumor
+Stomach Adenocarcinoma	79	Primary Tumor
+Bladder Urothelial Carcinoma	80	Primary Tumor
+Thyroid Carcinoma	81	Primary Tumor
+Thyroid Carcinoma	82	Primary Tumor
+Thyroid Carcinoma	83	Primary Tumor
 Stomach Adenocarcinoma	84	Primary Tumor
-Breast Invasive Carcinoma	85	Primary Tumor
+Thyroid Carcinoma	85	Primary Tumor
 Bladder Urothelial Carcinoma	86	Primary Tumor
-Breast Invasive Carcinoma	87	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	88	Primary Tumor
-Lung Adenocarcinoma	89	Primary Tumor
-Stomach Adenocarcinoma	90	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	91	Primary Tumor
-Stomach Adenocarcinoma	92	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	93	Primary Tumor
-Stomach Adenocarcinoma	94	Primary Tumor
-Breast Invasive Carcinoma	95	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	96	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	97	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	98	Primary Tumor
-Lung Adenocarcinoma	99	Primary Tumor
-Bladder Urothelial Carcinoma	100	Primary Tumor
-Breast Invasive Carcinoma	101	Primary Tumor
-Bladder Urothelial Carcinoma	102	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	103	Primary Tumor
+Lung Adenocarcinoma	87	Primary Tumor
+Breast Invasive Carcinoma	88	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	89	Primary Tumor
+Bladder Urothelial Carcinoma	90	Primary Tumor
+Lung Adenocarcinoma	91	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	92	Primary Tumor
+Stomach Adenocarcinoma	93	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	94	Primary Tumor
+Lung Adenocarcinoma	95	Primary Tumor
+Stomach Adenocarcinoma	96	Primary Tumor
+Stomach Adenocarcinoma	97	Primary Tumor
+Bladder Urothelial Carcinoma	98	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	99	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	100	Primary Tumor
+Stomach Adenocarcinoma	101	Primary Tumor
+Breast Invasive Carcinoma	102	Primary Tumor
+Lung Adenocarcinoma	103	Primary Tumor
 Lung Adenocarcinoma	104	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	105	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	106	Primary Tumor
-Lung Adenocarcinoma	107	Primary Tumor
-Breast Invasive Carcinoma	108	Primary Tumor
-Bladder Urothelial Carcinoma	109	Primary Tumor
-Lung Adenocarcinoma	110	Primary Tumor
-Stomach Adenocarcinoma	111	Primary Tumor
-Stomach Adenocarcinoma	112	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	113	Primary Tumor
-Thyroid Carcinoma	114	Primary Tumor
+Breast Invasive Carcinoma	105	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	106	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	107	Primary Tumor
+Lung Adenocarcinoma	108	Primary Tumor
+Breast Invasive Carcinoma	109	Primary Tumor
+Thyroid Carcinoma	110	Primary Tumor
+Lung Adenocarcinoma	111	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	112	Primary Tumor
+Breast Invasive Carcinoma	113	Primary Tumor
+Lung Adenocarcinoma	114	Primary Tumor
 Head and Neck Squamous Cell Carcinoma	115	Primary Tumor
 Stomach Adenocarcinoma	116	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	117	Primary Tumor
-Stomach Adenocarcinoma	118	Primary Tumor
-Bladder Urothelial Carcinoma	119	Primary Tumor
-Stomach Adenocarcinoma	120	Primary Tumor
-Lung Adenocarcinoma	121	Primary Tumor
+Breast Invasive Carcinoma	117	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	118	Primary Tumor
+Lung Adenocarcinoma	119	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	120	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	121	Primary Tumor
 Bladder Urothelial Carcinoma	122	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	123	Primary Tumor
+Lung Adenocarcinoma	123	Primary Tumor
 Lung Adenocarcinoma	124	Primary Tumor
-Thyroid Carcinoma	125	Primary Tumor
-Bladder Urothelial Carcinoma	126	Primary Tumor
-Breast Invasive Carcinoma	127	Primary Tumor
-Breast Invasive Carcinoma	128	Primary Tumor
-Bladder Urothelial Carcinoma	129	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	130	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	131	Primary Tumor
-Stomach Adenocarcinoma	132	Primary Tumor
-Bladder Urothelial Carcinoma	133	Primary Tumor
-Stomach Adenocarcinoma	134	Primary Tumor
-Stomach Adenocarcinoma	135	Primary Tumor
-Bladder Urothelial Carcinoma	136	Primary Tumor
-Lung Adenocarcinoma	137	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	138	Primary Tumor
-Breast Invasive Carcinoma	139	Primary Tumor
-Thyroid Carcinoma	140	Primary Tumor
+Bladder Urothelial Carcinoma	125	Primary Tumor
+Stomach Adenocarcinoma	126	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	127	Primary Tumor
+Lung Adenocarcinoma	128	Primary Tumor
+Stomach Adenocarcinoma	129	Primary Tumor
+Stomach Adenocarcinoma	130	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	131	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	132	Primary Tumor
+Thyroid Carcinoma	133	Primary Tumor
+Uterine Corpus Endometrial Carcinoma	134	Primary Tumor
+Lung Adenocarcinoma	135	Primary Tumor
+Lung Adenocarcinoma	136	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	137	Primary Tumor
+Stomach Adenocarcinoma	138	Primary Tumor
+Thyroid Carcinoma	139	Primary Tumor
+Lung Adenocarcinoma	140	Primary Tumor
 Stomach Adenocarcinoma	141	Primary Tumor
-Uterine Corpus Endometrial Carcinoma	142	Primary Tumor
-Stomach Adenocarcinoma	143	Primary Tumor
-Head and Neck Squamous Cell Carcinoma	144	Primary Tumor
-Breast Invasive Carcinoma	145	Primary Tumor
-Thyroid Carcinoma	146	Primary Tumor
-Lung Adenocarcinoma	147	Primary Tumor
+Stomach Adenocarcinoma	142	Primary Tumor
+Thyroid Carcinoma	143	Primary Tumor
+Bladder Urothelial Carcinoma	144	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	145	Primary Tumor
+Head and Neck Squamous Cell Carcinoma	146	Primary Tumor
+Stomach Adenocarcinoma	147	Primary Tumor
 Stomach Adenocarcinoma	148	Primary Tumor
 Head and Neck Squamous Cell Carcinoma	149	Primary Tumor
 Lung Adenocarcinoma	150	Primary Tumor
