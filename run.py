@@ -6,7 +6,7 @@ import sys
 import os
 import json
 
-from src.data import make_dataset
+from src.data import make_dataset, test_data_generator
 from src.features import build_features
 from src.models import train_model
 from src.visualization import visualize
@@ -15,8 +15,8 @@ sys.path.insert(0, 'src')
 
 def main(targets):
     if "test" in targets:
-        test_path_metadata = 'test/test_metadata.tsv'
-        test_path_fungi = 'test/test_fungi_data.tsv'
+        
+        test_path_metadata, test_path_fungi = test_data_generator.generate_test_data()
 
         metadata = make_dataset.read_fungi_data(test_path_metadata)
         feature_table = make_dataset.read_fungi_data(test_path_fungi)
