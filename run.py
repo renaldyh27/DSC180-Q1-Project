@@ -1,8 +1,38 @@
+#!/usr/bin/env python
+
+
 ## NECESSARY IMPORTS
+import sys
+import os
+import json
+
+from src.data import make_dataset
+from src.features import build_features
+from src.models import train_model
+from src.visualization import visualize
+
+sys.path.insert(0, 'src')
+
+def main(targets):
+    if "test" in targets:
+        metadata = make_dataset.read_fungi_data("data/metadata_fungi_HMS_1986samples.tsv")
+        feature_table = make_dataset.read_fungi_data("data/count_data_fungi_WIS_intersect_HMS_1986samples.tsv")
+        metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor')
+        # X
+        filtered_feature_table = build_features.relevant_feature_data(metadata_table,feature_table)
+        # target - Y
+        disease_types = build_features.disease_type_count(metadata_table)
+        # training model
+        auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table,disease_types)
+        
+        return auroc_scores, aupr_scores
+    else:
+        return [],[]
+            
 
 if __name__ == "__main__":
-    #TODO: load data, clean, save processed data
-    #TODO: loop for cross validation
-    #TODO: build models, predict, and score
-    #TODO: save plotting data, generate plot
-    #TODO: other outputs (final models, scores, etc.)
+    # python run.py test
+    targets = sys.argv[1:]
+    auroc_scores, aupr_scores = main(targets)
+    print(auroc_scores, aupr_scores)
+    
