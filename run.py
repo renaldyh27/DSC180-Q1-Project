@@ -11,7 +11,7 @@ from src.features import build_features
 from src.models import train_model
 from src.visualization import visualize
 
-sys.path.insert(0, 'src')
+# sys.path.insert(0, 'src')
 
 def main(targets):
     if "test" in targets:
@@ -31,8 +31,12 @@ def main(targets):
         auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table,disease_types)
         
         return auroc_scores, aupr_scores
-    else:
-        return [],[]
+    
+    if "all" in targets:
+        with open("config/data-params") as fh:
+            data_cfg = json.load(fh)
+            
+        metadata_table = make_dataset.read_fungi_data(**data_cfg)
             
 
 if __name__ == "__main__":

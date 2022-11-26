@@ -1,0 +1,5 @@
+{
+    "feats": ["disease_type", "sample_type"],
+    "sample_type":"Primary Tumor",
+    "outfile": "data/temp/features-simple.csv"
+}
