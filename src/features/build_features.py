@@ -21,13 +21,16 @@ def filter_sample_type(fungi_metadata, sample_type, outfile_metadata):
  
 def disease_type_count(fungi_metadata):
     '''One hot encode disease_type'''
-    return pd.get_dummies(fungi_metadata['disease_type']) 
+    one_hot_df = pd.get_dummies(fungi_metadata['disease_type'])
+    one_hot_df.to_csv("data/temp/one_hot_disease_type.tsv",sep='\t',index=False)
+    
+    return one_hot_df
     
 def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
     '''Filter feature tables for relevant samples '''
-    df = feature_table.filter(items = fungi_metadata.index, axis = 0)
-    df.to_csv("data/temp/" + feature_table_name + "_filtered_samples",sep='\t',index=False)
-    return df
+    filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
+    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.tsv",sep='\t',index=False)
+    return filter_df
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
     '''Filter all feature tables for relevant samples'''
