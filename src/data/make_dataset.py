@@ -1,11 +1,15 @@
 import pandas as pd
 
-def read_fungi_data(path):
-    dataset = pd.read_csv(path, sep='\t',header=0, index_col='sampleid')
-    return dataset
-
-def read_tcga_abbrev(path):
-    return pd.read_csv(path, index_col='dz')
+def read_fungi_data(metadata_path, tcga_path, high_coverage_path, wis_intersect_path, decontaminated_path):
+    '''Read Fungi Feature Tables, Metadata and TCGA Abbrev Files'''
+    
+    metadata_df = pd.read_csv(metadata_path, sep='\t',header=0, index_col='sampleid')
+    tcga_abbrev_df = pd.read_csv(tcga_path, index_col='dz')
+    high_coverage_df = pd.read_csv(high_coverage_path, sep='\t',header=0, index_col='sampleid')
+    wis_intersect_df = pd.read_csv(wis_intersect_path, sep='\t',header=0, index_col='sampleid')
+    decontaminated_df = pd.read_csv(decontaminated_path, sep='\t',header=0, index_col='sampleid')
+    
+    return (metadata_df,tcga_abbrev_df, high_coverage_df, wis_intersect_df, decontaminated_df)
 
 def proces_metadata(metadata_file):
     '''Takes in raw metadata file and outputs 2 things: extract the relevant sample IDs and extract one hot encoding of the Cancer Types'''
