@@ -23,10 +23,14 @@ def disease_type_count(fungi_metadata):
     '''One hot encode disease_type'''
     return pd.get_dummies(fungi_metadata['disease_type']) 
     
-def relevant_feature_data(fungi_metadata, feature_table):
+def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
     '''Filter feature tables for relevant samples '''
-    return feature_table.filter(items = fungi_metadata.index, axis = 0)
+    df = feature_table.filter(items = fungi_metadata.index, axis = 0)
+    df.to_csv("data/temp/" + feature_table_name + "_filtered_samples",sep='\t',index=False)
+    return df
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
     '''Filter all feature tables for relevant samples'''
-    return map(lambda x: relevant_feature_data(fungi_metadata, x), datasets)
+    dataset_names = ["high_coverage","WIS_intersect","decontaminated"]
+    return map(lambda feature_table, feature_table_name: 
+        relevant_feature_data(fungi_metadata, feature_table, feature_table_name), datasets, dataset_names)

@@ -40,13 +40,12 @@ def main(targets):
             
         metadata_table, tcga_abbrev, high_coverage_feature, wis_intersect_feature, decontaminated_feature = make_dataset.read_fungi_data(**data_cfg)
         datasets = (high_coverage_feature, wis_intersect_feature,decontaminated_feature)
-        
         with open("config/feature-params.json") as fh:
             data_sa = json.load(fh)
             
         filtered_metadata = build_features.filter_sample_type(metadata_table, **data_sa)
         # X (three datasets)
-        filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets)
+        filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets,)
         # target - Y
         disease_types_count = build_features.disease_type_count(filtered_metadata)
         
@@ -54,7 +53,7 @@ def main(targets):
             model_cfg = json.load(fh)
             
         for dataset in filtered_feature_tables:
-            auroc_scores, aupr_scores = train_model.model_predict(dataset,disease_types_count,**model_cfg)
+            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, **model_cfg)
        
 
         return auroc_scores, aupr_scores
