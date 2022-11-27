@@ -45,7 +45,7 @@ def main(targets):
             
         filtered_metadata = build_features.filter_sample_type(metadata_table, **data_sa)
         # X (three datasets)
-        filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets,)
+        filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets)
         # target - Y
         disease_types_count = build_features.disease_type_count(filtered_metadata)
         
