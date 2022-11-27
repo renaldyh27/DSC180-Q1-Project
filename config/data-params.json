@@ -1,2 +1,7 @@
-{"raw_metadata":
-"data/metadata_fungi_HMS_1986samples.tsv"}
+{
+    "metadata_path":"data/raw/metadata_fungi_HMS_1986samples.tsv",
+    "tcga_path":"data/raw/tcga_abbreviations.csv",
+    "high_coverage_path": "data/raw/count_data_fungi_high_coverage_HMS_1986samples.tsv",
+    "wis_intersect_path":"data/raw/count_data_fungi_WIS_intersect_HMS_1986samples.tsv",
+    "decontaminated_path":"data/raw/count_data_fungi_decontaminated_HMS_1986samples.tsv"
+}

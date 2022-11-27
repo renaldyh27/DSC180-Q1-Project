@@ -7,24 +7,13 @@ from sklearn.metrics import roc_auc_score
 import numpy as np
 
 ## TODO Py script to train and output model ## 
-def model_predict(dataset, cancer_types):
+def model_predict(dataset, cancer_types, n_splits, skf_random, shuffle,loss,learning_rate, n_estimators,max_depth, clf_random):
     '''Take in as input the cleaned datasets of the features(X) and the one-hot encoded cancer types/targets(Y)
        then perform 10-fold validation split and use them to train the model.
        
        Output: Auroc and Aupr scores of the model
        
     '''
-    
-    #TODO: define cross validation hyperparams
-    n_splits = 10
-    skf_random = 0 #DO NOT TOUCH
-    shuffle=True
-    #TODO: define model hyperparams, can automate tuning later
-    loss = 'exponential'
-    learning_rate = 0.1
-    n_estimators = 150
-    max_depth = 3
-    clf_random = 0 #DO NOT TOUCH
    
     skf = StratifiedKFold(n_splits=n_splits, random_state=skf_random, shuffle=shuffle)
 
