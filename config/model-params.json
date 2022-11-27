@@ -5,6 +5,6 @@
     "max_depth":3,
     "clf_random":0,
     "skf_random":0,
-    "n_splits":3,
+    "n_splits":10,
     "shuffle":true
 }

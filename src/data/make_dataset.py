@@ -1,13 +1,17 @@
 import pandas as pd
 
+def read_fungi_file(path):
+    '''Read Fungi File Data'''
+    return pd.read_csv(path, sep="\t",header=0,index_col="sampleid")
+
 def read_fungi_data(metadata_path, tcga_path, high_coverage_path, wis_intersect_path, decontaminated_path):
     '''Read Fungi Feature Tables, Metadata and TCGA Abbrev Files'''
     
-    metadata_df = pd.read_csv(metadata_path, sep='\t',header=0, index_col='sampleid')
+    metadata_df = read_fungi_file(metadata_path)
     tcga_abbrev_df = pd.read_csv(tcga_path, index_col='dz')
-    high_coverage_df = pd.read_csv(high_coverage_path, sep='\t',header=0, index_col='sampleid')
-    wis_intersect_df = pd.read_csv(wis_intersect_path, sep='\t',header=0, index_col='sampleid')
-    decontaminated_df = pd.read_csv(decontaminated_path, sep='\t',header=0, index_col='sampleid')
+    high_coverage_df = read_fungi_file(high_coverage_path)
+    wis_intersect_df = read_fungi_file(wis_intersect_path)
+    decontaminated_df = read_fungi_file(decontaminated_path)
     
     return (metadata_df,tcga_abbrev_df, high_coverage_df, wis_intersect_df, decontaminated_df)
 
