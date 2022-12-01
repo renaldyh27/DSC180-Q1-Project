@@ -5,7 +5,7 @@ from sklearn.metrics import roc_auc_score
 
 import numpy as np
 
-def model_predict(dataset, disease_types, gbc_model, skf_model):
+def model_predict(dataset, disease_types, gbc_model, skf_validator):
     """Take in as input the cleaned datasets of the features(X) and one-hot encoded cancer types/targets(Y)
        then perform 10-fold validation split and use them to train the model.
 
@@ -13,13 +13,13 @@ def model_predict(dataset, disease_types, gbc_model, skf_model):
         dataset (Dataframe): Dataframe of feature table
         disease_types (DataFrame): One hot encoded dataframe of disease_types
         gbc_model (GradientBoostingClassifier): Initialized GradientBoostingClassifier
-        skf_model (StratifiedKFold): Initialized StratifiedKFold 
+        skf_validator (StratifiedKFold): Initialized StratifiedKFold 
 
     Returns:
         (List, List): Outputs two lists of AUROC and AUPR scores of the model
     """
    
-    skf = skf_model
+    skf = skf_validator
 
     clf = gbc_model
     
@@ -61,12 +61,12 @@ def init_gbc_model(loss, learning_rate, n_estimators, max_depth, gbc_random_stat
         gbc_random_state (int): random_state
 
     Returns:
-        GradientBoostingClassifier: _description_
+        GradientBoostingClassifier: Initialized GradientBoostingClassifier model
     """
     return GradientBoostingClassifier(loss=loss, learning_rate=learning_rate, n_estimators=n_estimators, max_depth=max_depth, random_state=gbc_random_state)
 
-def init_skf_model(n_splits, shuffle, skf_random_state):
-    """Function for initializing the stratified k folding model
+def init_skf(n_splits, shuffle, skf_random_state):
+    """Function for initializing the StratifiedKFold cross-validator
 
     Args:
         n_splits (int): Number of splits to seperate data
@@ -74,6 +74,6 @@ def init_skf_model(n_splits, shuffle, skf_random_state):
         skf_random_state (int): random_state
 
     Returns:
-        StratifiedKFold: _description_
+        StratifiedKFold: Initialized StratifiedKFold cross-validator
     """
     return StratifiedKFold(n_splits=n_splits,shuffle=shuffle, random_state=skf_random_state)

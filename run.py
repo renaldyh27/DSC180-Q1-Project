@@ -57,12 +57,12 @@ def main(targets):
             gbc_model_params = json.load(fh)
         
         with open("config/skf-model-params.json") as fh:
-            skf_model_params = json.load(fh)
+            skf_params = json.load(fh)
             
         for dataset in filtered_feature_tables:
             gbc_model = train_model.init_gbc_model(**gbc_model_params)
-            skf_model = train_model.init_skf_model(**skf_model_params)
-            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, gbc_model, skf_model)
+            skf = train_model.init_skf(**skf_params)
+            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, gbc_model, skf)
 
         #TODO: Add visualization code here
 
