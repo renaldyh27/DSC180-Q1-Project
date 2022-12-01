@@ -23,7 +23,7 @@ def filter_sample_type(fungi_metadata, sample_type):
     fungi_metadata = fungi_metadata[fungi_metadata['disease_type'].map(
         fungi_metadata['disease_type'].value_counts()) > min_count]
     
-    fungi_metadata.to_csv("data/temp/metadata_" + '_'.join(sample_type.lower().split()) + '.csv', index=False)
+    fungi_metadata.to_csv("data/temp/metadata_" + '_'.join(sample_type.lower().split()) + '.csv')
     
     return fungi_metadata
  
@@ -37,7 +37,7 @@ def disease_type_count(fungi_metadata):
         DataFrame: One hot encoded dataframe of disease types
     """
     one_hot_df = pd.get_dummies(fungi_metadata['disease_type'])
-    one_hot_df.to_csv("data/temp/one_hot_disease_type.csv",index=False)
+    one_hot_df.to_csv("data/temp/one_hot_disease_type.csv")
     
     return one_hot_df
     
@@ -53,7 +53,7 @@ def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
         DataFrame: Feature table containing relevant samples
     """
     filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
-    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.csv",index=False)
+    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.csv")
     return filter_df
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
