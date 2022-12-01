@@ -1,0 +1,5 @@
+{
+    "n_splits":10,
+    "skf_random_state":0,
+    "shuffle":true
+}

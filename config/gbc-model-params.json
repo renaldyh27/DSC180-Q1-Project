@@ -3,8 +3,5 @@
     "learning_rate":0.1,
     "n_estimators":150,
     "max_depth":3,
-    "clf_random":0,
-    "skf_random":0,
-    "n_splits":10,
-    "shuffle":true
+    "gbc_random_state":0
 }
