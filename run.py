@@ -6,12 +6,14 @@ import sys
 import os
 import json
 
+sys.path.insert(0, 'src')
+
 from src.data import make_dataset, test_data_generator
 from src.features import build_features
 from src.models import train_model
 from src.visualization import visualize
 
-# sys.path.insert(0, 'src')
+
 
 def main(targets):
     if "test" in targets:
@@ -36,24 +38,31 @@ def main(targets):
     
     if "all" in targets:
         with open("config/data-params.json") as fh:
-            data_cfg = json.load(fh)
+            file_paths = json.load(fh)
             
-        metadata_table, tcga_abbrev, high_coverage_feature, wis_intersect_feature, decontaminated_feature = make_dataset.read_fungi_data(**data_cfg)
+        metadata_table, tcga_abbrev, high_coverage_feature, wis_intersect_feature, decontaminated_feature = make_dataset.read_fungi_data(**file_paths)
+       
         datasets = (high_coverage_feature, wis_intersect_feature,decontaminated_feature)
+        
         with open("config/feature-params.json") as fh:
-            data_sa = json.load(fh)
+            feature_params = json.load(fh)
             
-        filtered_metadata = build_features.filter_sample_type(metadata_table, **data_sa)
+        filtered_metadata = build_features.filter_sample_type(metadata_table, **feature_params)
         # X (three datasets)
         filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets)
-        # target - Y
+        # Target - Y
         disease_types_count = build_features.disease_type_count(filtered_metadata)
         
-        with open("config/model-params.json") as fh:
-            model_cfg = json.load(fh)
+        with open("config/gbc-model-params.json") as fh:
+            gbc_model_params = json.load(fh)
+        
+        with open("config/skf-model-params.json") as fh:
+            skf_model_params = json.load(fh)
             
         for dataset in filtered_feature_tables:
-            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, **model_cfg)
+            gbc_model = train_model.init_gbc_model(**gbc_model_params)
+            skf_model = train_model.init_skf_model(**skf_model_params)
+            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, gbc_model, skf_model)
 
         #TODO: Add visualization code here
 

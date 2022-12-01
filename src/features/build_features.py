@@ -1,7 +1,15 @@
 import pandas as pd
 
-def filter_sample_type(fungi_metadata, sample_type, outfile_metadata):
-    '''Filter metadata by sample type'''
+def filter_sample_type(fungi_metadata, sample_type):
+    """Filter metadata by sample type
+
+    Args:
+        fungi_metadata (DataFrame): Dataframe of fungi metadata
+        sample_type (String): Sample type that will be explored in analysis. ex. Primary Tumor, Blood Derived Normal
+
+    Returns:
+        DataFrame: Dataframe containing only samples of given sample_type
+    """
     min_count = 20
     fungi_metadata_cols = ['disease_type','sample_type'] 
     
@@ -15,25 +23,49 @@ def filter_sample_type(fungi_metadata, sample_type, outfile_metadata):
     fungi_metadata = fungi_metadata[fungi_metadata['disease_type'].map(
         fungi_metadata['disease_type'].value_counts()) > min_count]
     
-    fungi_metadata.to_csv(outfile_metadata, sep="\t", index=False)
+    fungi_metadata.to_csv("data/temp/metadata_" + '_'.join(sample_type.lower().split()) + '.csv', index=False)
     
     return fungi_metadata
  
 def disease_type_count(fungi_metadata):
-    '''One hot encode disease_type'''
+    """Function for one hot encoding disease_type
+
+    Args:
+        fungi_metadata (DataFrame): Dataframe of fungi metadata
+
+    Returns:
+        DataFrame: One hot encoded dataframe of disease types
+    """
     one_hot_df = pd.get_dummies(fungi_metadata['disease_type'])
-    one_hot_df.to_csv("data/temp/one_hot_disease_type.tsv",sep='\t',index=False)
+    one_hot_df.to_csv("data/temp/one_hot_disease_type.csv",index=False)
     
     return one_hot_df
     
 def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
-    '''Filter feature tables for relevant samples '''
+    """Filter given feature table for relevant samples
+
+    Args:
+        fungi_metadata (DataFrame): Dataframe of fungi metadata
+        feature_table (DataFrame): Dataframe of feature table
+        feature_table_name (String): Name of feature table
+
+    Returns:
+        DataFrame: Feature table containing relevant samples
+    """
     filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
-    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.tsv",sep='\t',index=False)
+    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.csv",index=False)
     return filter_df
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
-    '''Filter all feature tables for relevant samples'''
-    dataset_names = ["high_coverage","WIS_intersect","decontaminated"]
+    """Filter all feature tables for relevant samples
+
+    Args:
+        fungi_metadata (DataFrame): Dataframe of metadata
+        datasets (List(DataFrame)): List of feature table dataframes
+
+    Returns:
+        map: Returns a map of feature tables containing relevant samples
+    """
+    dataset_names = ["high_coverage","wis_intersect","decontaminated"]
     return map(lambda feature_table, feature_table_name: 
         relevant_feature_data(fungi_metadata, feature_table, feature_table_name), datasets, dataset_names)
