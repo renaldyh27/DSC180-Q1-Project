@@ -17,7 +17,7 @@ def read_fungi_data(metadata_path, tcga_abbrev_path, high_coverage_path, wis_int
     Args:
         metadata_path (String): Path of fungi metadata file
         tcga_abbrev_path (String): Path of TCGA abbrevation file
-        high_coverage_path (String): Pat of High Coverage fungi data file
+        high_coverage_path (String): Path of High Coverage fungi data file
         wis_intersect_path (String): Path of WIS intersect fungi data file
         decontaminated_path (String): Path of decontaminiated fungi data file
 
