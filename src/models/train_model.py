@@ -23,12 +23,15 @@ def model_predict(dataset, disease_types, gbc_model, skf_validator):
 
     clf = gbc_model
     
+    total_auroc_data = {} #all scores for all cancers, for plotting
+    total_aupr_data = {}
+    
     for i, cancer in enumerate(disease_types.columns, start=1):
         X = dataset
         y = disease_types[cancer]
         
-        auroc_plt_data = np.array([])
-        aupr_plt_data = np.array([])
+        auroc_plt_data = []
+        aupr_plt_data = []
         
         # Loop trough folds
         for train_index, val_index in skf.split(X, y):
@@ -45,10 +48,13 @@ def model_predict(dataset, disease_types, gbc_model, skf_validator):
             auroc = roc_auc_score(val_y, preds)
             aupr = average_precision_score(val_y, preds)
             
-            auroc_plt_data = np.append(auroc_plt_data, auroc)
-            aupr_plt_data = np.append(aupr_plt_data, aupr)
+            auroc_plt_data.append(auroc)
+            aupr_plt_data.append(aupr)
     
-    return auroc_plt_data, aupr_plt_data
+        total_auroc_data[cancer] = auroc_plt_data
+        total_aupr_data[cancer] = aupr_plt_data
+    
+    return total_auroc_data, total_aupr_data
 
 def init_gbc_model(loss, learning_rate, n_estimators, max_depth, gbc_random_state):
     """Function for initializing the gradient boosting classifier model

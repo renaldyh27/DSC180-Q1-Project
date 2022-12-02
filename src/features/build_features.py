@@ -51,10 +51,11 @@ def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
 
     Returns:
         DataFrame: Feature table containing relevant samples
+        String: Feature table name
     """
     filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
     filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.csv")
-    return filter_df
+    return filter_df, feature_table_name
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
     """Filter all feature tables for relevant samples
@@ -66,6 +67,7 @@ def relevant_feature_table_samples(fungi_metadata, datasets):
     Returns:
         map: Returns a map of feature tables containing relevant samples
     """
-    dataset_names = ["high_coverage","wis_intersect","decontaminated"]
+    
+    dataset_names = ["high_coverage","wis_intersect", "decontaminated"]
     return map(lambda feature_table, feature_table_name: 
         relevant_feature_data(fungi_metadata, feature_table, feature_table_name), datasets, dataset_names)

@@ -43,6 +43,7 @@ def main(targets):
         metadata_table, tcga_abbrev, high_coverage_feature, wis_intersect_feature, decontaminated_feature = make_dataset.read_fungi_data(**file_paths)
        
         datasets = (high_coverage_feature, wis_intersect_feature,decontaminated_feature)
+        plot_data = {}
         
         with open("config/feature-params.json") as fh:
             feature_params = json.load(fh)
@@ -58,20 +59,22 @@ def main(targets):
         
         with open("config/skf-model-params.json") as fh:
             skf_params = json.load(fh)
-            
-        for dataset in filtered_feature_tables:
+        
+        
+        for dataset, dataset_name in filtered_feature_tables:
             gbc_model = train_model.init_gbc_model(**gbc_model_params)
             skf = train_model.init_skf(**skf_params)
             auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, gbc_model, skf)
+            plot_data[dataset_name] = (auroc_scores, aupr_scores)
+        
+        plot_data_path = visualize.save_plot_data(plot_data)
+        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev)
 
-        #TODO: Add visualization code here
-
-        return auroc_scores, aupr_scores
+        return 
         
 
 if __name__ == "__main__":
     # python run.py test
     targets = sys.argv[1:]
-    auroc_scores, aupr_scores = main(targets)
-    print(auroc_scores, aupr_scores)
-    
+    main(targets)
+    #generates graph in final_figure.png
