@@ -26,34 +26,20 @@ def read_fungi_data(metadata_path, tcga_abbrev_path, high_coverage_path, wis_int
     """
     
     metadata_df = read_fungi_file(metadata_path)
-    tcga_abbrev_df = pd.read_csv(tcga_abbrev_path, index_col='dz')
+    tcga_abbrev_df = read_tcga_abbrev_file(tcga_abbrev_path)
     high_coverage_df = read_fungi_file(high_coverage_path)
     wis_intersect_df = read_fungi_file(wis_intersect_path)
     decontaminated_df = read_fungi_file(decontaminated_path)
     
     return (metadata_df, tcga_abbrev_df, high_coverage_df, wis_intersect_df, decontaminated_df)
 
-def proces_metadata(metadata_file):
-    '''Takes in raw metadata file and outputs 2 things: extract the relevant sample IDs and extract one hot encoding of the Cancer Types'''
-    fungi_metadata = metadata_file
-    
-    fungi_metadata_cols = ['disease_type','sample_type'] 
-    fungi_metadata = fungi_metadata[fungi_metadata_cols] #grab needed columns
-    fungi_metadata = fungi_metadata[fungi_metadata['sample_type'] == 'Primary Tumor'] #filter only Primary Tumors
+def read_tcga_abbrev_file(tcga_abbrev_path):
+    """Read TCGA abbrev file
 
-    min_count = 20 #drop cancers with fewer than 20 samples
-    fungi_metadata = fungi_metadata[fungi_metadata['disease_type'].map(fungi_metadata['disease_type'].value_counts()) > min_count]
+    Args:
+        path (String): Path of TCGA abbrevation file
 
-    sample_ids = fungi_metadata.index #relevant sampleID's after final cleaning
-    #TODO Create sample relevant sample IDs tsvs in interim data
-
-    cancer_types = pd.get_dummies(fungi_metadata['disease_type']) #one hot encode disease types
-    #TODO Create relevant cancer types encoding tsvs in interim data
-
-    return 
-
-def process_fungi_data(data, sample_ids):
-    '''Takes in the raw fungi data and filter for relevant samples and creates the dataset for interim data'''
-    filtered_dataset = data.filter(items = sample_ids, axis=0) #filter feature tables for relevant samples
-    #TODO Create dataset for interim data
-    return filtered_dataset
+    Returns:
+        DataFrame: Dataframe of TCGA cancer abbreviations
+    """
+    return pd.read_csv(tcga_abbrev_path, index_col='dz')

@@ -3,10 +3,7 @@
 
 ## NECESSARY IMPORTS
 import sys
-import os
 import json
-
-sys.path.insert(0, 'src')
 
 from src.data import make_dataset, test_data_generator
 from src.features import build_features
@@ -22,19 +19,34 @@ def main(targets):
 
         metadata = make_dataset.read_fungi_file(test_path_metadata)
         feature_table = make_dataset.read_fungi_file(test_path_fungi)
-        metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor',"test/test_metadata_filtered.csv")
+        tcga_abbrev = make_dataset.read_tcga_abbrev_file("data/raw/tcga_abbreviations.csv")
+        
+        metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor')
 
         # X
-        filtered_feature_table = build_features.relevant_feature_data(metadata_table,feature_table)
+        filtered_feature_table = build_features.relevant_feature_data(metadata_table, feature_table, 'test')
         # target - Y
-        disease_types = build_features.disease_type_count(metadata_table)
+        disease_types_count = build_features.disease_type_count(metadata_table)
         # training model
-        with open("config/model-params.json") as fh:
-            model_cfg = json.load(fh)
-            
-        auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table, disease_types,**model_cfg)
+        with open("config/gbc-model-params.json") as fh:
+            gbc_model_params = json.load(fh)
         
-        return auroc_scores, aupr_scores
+        with open("config/skf-model-params.json") as fh:
+            skf_params = json.load(fh)
+        
+        
+        plot_data = {}
+        # auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table, disease_types,**model_cfg)
+        gbc_model = train_model.init_gbc_model(**gbc_model_params)
+        skf = train_model.init_skf(**skf_params)
+        auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table[0], disease_types_count, gbc_model, skf)
+        plot_data['test'] = (auroc_scores, aupr_scores)
+        
+        plot_data_path = visualize.save_plot_data(plot_data)
+        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev)
+
+        return 
+
     
     if "all" in targets:
         with open("config/data-params.json") as fh:
