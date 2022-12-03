@@ -5,7 +5,7 @@
 import sys
 import json
 
-from src.data import make_dataset, test_data_generator
+from src.data import make_dataset
 from src.features import build_features
 from src.models import train_model
 from src.visualization import visualize
