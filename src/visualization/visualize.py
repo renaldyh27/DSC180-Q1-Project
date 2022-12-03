@@ -4,11 +4,33 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
-def abbreviate(string, tcga_abbrev):
-    abbr = tcga_abbrev.loc[string][0]
+def abbreviate(cancer_type, tcga_abbrev):
+    """Abbreviate given cancer type into TCGA abbreviation
+
+    Args:
+        cancer_type (String): Cancer type name
+        tcga_abbrev (DataFrame): Dataframe containing abbreviations of cancer types
+
+    Returns:
+        String: Abbreviated cancer type
+    """
+    abbr = tcga_abbrev.loc[cancer_type][0]
     return abbr
 
 def plot_confidence_interval(x, values, z=1.96, color='#2187bb', horizontal_line_width=0.25, axes=None):
+    """Create confidence interval 
+
+    Args:
+        x (int): _description_
+        values (List(int)): _description_
+        z (float, optional): _description_. Defaults to 1.96.
+        color (str, optional): _description_. Defaults to '#2187bb'.
+        horizontal_line_width (float, optional): _description_. Defaults to 0.25.
+        axes (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """
     mean = np.mean(values)
     stdev = np.std(values)
     confidence_interval = z * stdev / (len(values)**(1/2))
@@ -27,6 +49,15 @@ def plot_confidence_interval(x, values, z=1.96, color='#2187bb', horizontal_line
 
 
 def plot_baseline(proportion, x, color='#2187bb', horizontal_line_width=0.25, axes=None):
+    """_summary_
+
+    Args:
+        proportion (_type_): _description_
+        x (_type_): _description_
+        color (str, optional): _description_. Defaults to '#2187bb'.
+        horizontal_line_width (float, optional): _description_. Defaults to 0.25.
+        axes (_type_, optional): _description_. Defaults to None.
+    """
     left = x - 0.3 - horizontal_line_width / 2
     right = x + 0.3 + horizontal_line_width / 2
     
@@ -36,7 +67,15 @@ def plot_baseline(proportion, x, color='#2187bb', horizontal_line_width=0.25, ax
 
 
 def init_visualization(cancer_types, tcga_abbrev):
-    ## INITIALIZE PLOT ##
+    """_summary_
+
+    Args:
+        cancer_types (_type_): _description_
+        tcga_abbrev (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     fig, ax = plt.subplots(nrows=2, ncols=1, sharex=True, sharey=True)
     
     y_ticks = plt.yticks(np.arange(11)/10)
@@ -64,11 +103,16 @@ def save_plot_data(data):
     
     return path
 
-
 def plot_model_metrics(plot_data_path, cancer_types, tcga_abbrev):
-    ## INITIALIZE PLOT ##
+    """_summary_
+
+    Args:
+        plot_data_path (_type_): _description_
+        cancer_types (_type_): _description_
+        tcga_abbrev (_type_): _description_
+    """
     plot_data = pd.read_csv(plot_data_path, index_col='Metric')
-    
+    # initialize viz figure
     fig, ax = init_visualization(cancer_types, tcga_abbrev)
 
     colors = ['red','blue','orange']
