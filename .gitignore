@@ -2,4 +2,5 @@
 .ipynb_checkpoints
 __pycache__
 !src/data
+data/
 src/__init__.pyc
