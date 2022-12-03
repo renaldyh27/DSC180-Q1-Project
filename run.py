@@ -4,6 +4,8 @@
 ## NECESSARY IMPORTS
 import sys
 import json
+import os
+import shutil
 
 from src.data import make_dataset
 from src.features import build_features
@@ -14,13 +16,17 @@ from src.visualization import visualize
 
 def main(targets):
     if "test" in targets:
+        if not os.path.exists("data/temp"):
+            os.makedirs("data/temp")
+        if not os.path.exists("data/out"):
+            os.makedirs("data/out")
         
         test_path_metadata="test/test_metadata.tsv"
         test_path_fungi = "test/test_fungi_data.tsv"
 
         metadata = make_dataset.read_fungi_file(test_path_metadata)
         feature_table = make_dataset.read_fungi_file(test_path_fungi)
-        tcga_abbrev = make_dataset.read_tcga_abbrev_file("data/raw/tcga_abbreviations.csv")
+        tcga_abbrev = make_dataset.read_tcga_abbrev_file("test/tcga_abbreviations.csv")
         
         metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor')
 
@@ -44,12 +50,17 @@ def main(targets):
         plot_data['test'] = (auroc_scores, aupr_scores)
         
         plot_data_path = visualize.save_plot_data(plot_data)
-        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev)
+        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev, ['test'])
 
         return 
 
     
     if "all" in targets:
+        if not os.path.exists("data/temp"):
+            os.makedirs("data/temp")
+        if not os.path.exists("data/out"):
+            os.makedirs("data/out")
+            
         with open("config/data-params.json") as fh:
             file_paths = json.load(fh)
             
@@ -81,10 +92,24 @@ def main(targets):
             plot_data[dataset_name] = (auroc_scores, aupr_scores)
         
         plot_data_path = visualize.save_plot_data(plot_data)
-        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev)
+        # question about lablels
+        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev,['Species high coverage','Species ∩ WIS','Species decontaminated'])
 
         return 
         
+    if 'clean' in targets:
+        try:
+            os.remove('final_figure.png')
+        except OSError as e:  ## if failed, report it back to the user ##
+            print ("Error: %s - %s." % (e.filename, e.strerror))
+        try:
+            shutil.rmtree("data/temp")
+        except OSError as e:
+            print ("Error: %s - %s." % (e.filename, e.strerror))
+        try:
+            shutil.rmtree("data/out")
+        except OSError as e:
+            print ("Error: %s - %s." % (e.filename, e.strerror))
 
 if __name__ == "__main__":
     # python run.py test

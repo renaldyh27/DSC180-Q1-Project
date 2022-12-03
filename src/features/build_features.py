@@ -54,7 +54,7 @@ def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
         String: Feature table name
     """
     filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
-    filter_df.to_csv("data/temp/" + feature_table_name + "_filtered_samples.csv")
+    filter_df.to_csv("./data/temp/" + feature_table_name + "_filtered_samples.csv")
     return filter_df, feature_table_name
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
