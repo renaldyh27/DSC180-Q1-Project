@@ -15,7 +15,8 @@ from src.visualization import visualize
 def main(targets):
     if "test" in targets:
         
-        test_path_metadata, test_path_fungi = test_data_generator.generate_test_data()
+        test_path_metadata="test/test_metadata.tsv"
+        test_path_fungi = "test/test_fungi_data.tsv"
 
         metadata = make_dataset.read_fungi_file(test_path_metadata)
         feature_table = make_dataset.read_fungi_file(test_path_fungi)
@@ -36,7 +37,7 @@ def main(targets):
         
         
         plot_data = {}
-        # auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table, disease_types,**model_cfg)
+        
         gbc_model = train_model.init_gbc_model(**gbc_model_params)
         skf = train_model.init_skf(**skf_params)
         auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table[0], disease_types_count, gbc_model, skf)
