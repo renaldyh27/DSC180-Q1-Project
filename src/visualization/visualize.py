@@ -137,9 +137,9 @@ def plot_model_metrics(plot_data_path, disease_types, tcga_abbrev, dataset_names
     custom_lines = [Line2D([0], [0], color='red'),
                     Line2D([0], [0], color='blue'),
                     Line2D([0], [0], color='orange')]
-    plt.legend(labels=dataset_names,
-               handles=custom_lines)
     
+    ax[0].legend(labels=dataset_names,
+               handles=custom_lines, loc='center', bbox_to_anchor=(0.5, 1.23), ncol=3)
     plt.savefig('final_figure.png')
     
     return

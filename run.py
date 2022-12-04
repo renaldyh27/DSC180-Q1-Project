@@ -26,7 +26,7 @@ def main(targets):
 
         metadata = make_dataset.read_fungi_file(test_path_metadata)
         feature_table = make_dataset.read_fungi_file(test_path_fungi)
-        tcga_abbrev = make_dataset.read_tcga_abbrev_file("test/tcga_abbreviations.csv")
+        tcga_abbrev = make_dataset.read_tcga_abbrev_file("test/test_tcga_abbreviations.csv")
         
         metadata_table = build_features.filter_sample_type(metadata,'Primary Tumor')
 
