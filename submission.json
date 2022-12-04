@@ -1,4 +1,4 @@
 {
-    "dockerhub-id" : "emersonchao/dsc180a-capstone",
+    "dockerhub-id" : "emersonchao/dsc180",
     "build-script" : "python run.py test"
   }
