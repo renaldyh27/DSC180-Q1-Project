@@ -4,6 +4,16 @@ Numerous studies have explored the relationship between bacteria microbiome and 
 ## Retrieving the data locally:
 (1) Download the data files from the following Google Drive: https://drive.google.com/drive/u/0/folders/10fizMmiwPm-ziLHgRkqbN7f0nO7SR-cZ
 
-(2) Edit the file: config/data-params.json to include the paths of the downloaded data in the values of the their correponding key/file names
+(2) Edit the file: config/data-params.json to include the paths of the downloaded data in the value of their correponding keys which is indicated by their file names
+
+## Running the Project
+* To revert to a clean repository, from the project root dir, run `python run.py clean`
+  * This deletes all built files
+* To run the entire project on test data, from the project root dir, run `python run.py test`
+  * This fetches the test data, creates features, cleans the data, creates GBM model
+  and creates a performance graph
+* To run the entire project on the real data, from the project root dir, run `python run.py all`
+  * This fetches the data, creates features, cleans the data, creates GBM model
+  and creates a performance graph
 
 Collaborator: Renaldy Herlim, Emerson Chao, Amando Jimenez, Benjamin Sacks, Mark Zheng, Ethan Chan
