@@ -16,7 +16,7 @@ def model_predict(dataset, disease_types, gbc_model, skf_validator):
         skf_validator (StratifiedKFold): Initialized StratifiedKFold 
 
     Returns:
-        (List, List): Outputs two lists of AUROC and AUPR scores of the model
+        (Dict, Dict): Outputs two dict of AUROC and AUPR scores of the model
     """
    
     skf = skf_validator

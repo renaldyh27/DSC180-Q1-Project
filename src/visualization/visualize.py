@@ -4,32 +4,33 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
-def abbreviate(cancer_type, tcga_abbrev):
+def abbreviate(disease_type, tcga_abbrev):
     """Abbreviate given cancer type into TCGA abbreviation
 
     Args:
-        cancer_type (String): Cancer type name
+        disease_type (String): disease type name
         tcga_abbrev (DataFrame): Dataframe containing abbreviations of cancer types
 
     Returns:
-        String: Abbreviated cancer type
+        String: Abbreviated disease/cancer type
     """
-    abbr = tcga_abbrev.loc[cancer_type][0]
+    abbr = tcga_abbrev.loc[disease_type][0]
     return abbr
 
 def plot_confidence_interval(x, values, z=1.96, color='#2187bb', horizontal_line_width=0.25, axes=None):
     """Create confidence interval 
 
     Args:
-        x (int): _description_
-        values (List(int)): _description_
-        z (float, optional): _description_. Defaults to 1.96.
-        color (str, optional): _description_. Defaults to '#2187bb'.
-        horizontal_line_width (float, optional): _description_. Defaults to 0.25.
-        axes (_type_, optional): _description_. Defaults to None.
+        x (int): Position on x axis
+        values (List(int)): Data from given AUROC/AUPR scores
+        z (float, optional): z-value. Defaults to 1.96.
+        color (str, optional): Color of line. Defaults to '#2187bb'.
+        horizontal_line_width (float, optional): Width of horizontal line. Defaults to 0.25.
+        axes (Axes, optional): The axes in which the confidence interval should be plotted. Defaults to None.
 
     Returns:
-        _type_: _description_
+        (float, float): Mean and confidence interval of given values
+        
     """
     mean = np.mean(values)
     stdev = np.std(values)
@@ -49,7 +50,7 @@ def plot_confidence_interval(x, values, z=1.96, color='#2187bb', horizontal_line
 
 
 def plot_baseline(proportion, x, color='#2187bb', horizontal_line_width=0.25, axes=None):
-    """_summary_
+    """Plot baseline of graph
 
     Args:
         proportion (_type_): _description_
@@ -66,20 +67,20 @@ def plot_baseline(proportion, x, color='#2187bb', horizontal_line_width=0.25, ax
     return
 
 
-def init_visualization(cancer_types, tcga_abbrev):
-    """_summary_
+def init_visualization(disease_types, tcga_abbrev):
+    """Initialize visualization
 
     Args:
-        cancer_types (_type_): _description_
-        tcga_abbrev (_type_): _description_
+        disease_types (DataFrame): Cancer Type DataFrame
+        tcga_abbrev (DataFrame): TCGA abbrevation dataframe
 
     Returns:
-        _type_: _description_
+        Figure, axes: Returns figure and axes of the plot
     """
     fig, ax = plt.subplots(nrows=2, ncols=1, sharex=True, sharey=True)
     
     y_ticks = plt.yticks(np.arange(11)/10)
-    x_ticks = plt.xticks(np.arange(1, len(cancer_types.columns)+1), [abbreviate(cancer, tcga_abbrev) for cancer in cancer_types.columns])
+    x_ticks = plt.xticks(np.arange(1, len(disease_types.columns)+1), [abbreviate(cancer, tcga_abbrev) for cancer in disease_types.columns])
 
     fig.supylabel('Area Under Curve', fontsize='large')
     plt.autoscale(enable = False, tight=False, axis = 'y')
@@ -92,7 +93,7 @@ def save_plot_data(data):
     """Save plot data
 
     Args:
-        data (dict): keys are dataset names, values are auroc and aupr scores per cancer
+        data (dict): keys are dataset names, values are auroc and aupr scores per disease/cancer
         
     """
     
@@ -103,17 +104,17 @@ def save_plot_data(data):
     
     return path
 
-def plot_model_metrics(plot_data_path, cancer_types, tcga_abbrev, dataset_names):
-    """_summary_
+def plot_model_metrics(plot_data_path, disease_types, tcga_abbrev, dataset_names):
+    """Plot the model AUROC/AUPR scores
 
     Args:
-        plot_data_path (_type_): _description_
-        cancer_types (_type_): _description_
-        tcga_abbrev (_type_): _description_
+        plot_data_path (String): path of the plot data
+        disease_types (DataFrame): One hot encoded disease_type dataframe 
+        tcga_abbrev (DataFrame): Dataframe of TCGA abbreviations
     """
     plot_data = pd.read_csv(plot_data_path, index_col='Metric')
     # initialize viz figure
-    fig, ax = init_visualization(cancer_types, tcga_abbrev)
+    fig, ax = init_visualization(disease_types, tcga_abbrev)
 
     colors = ['red','blue','orange']
     offsets = [-0.3, 0, 0.3]
@@ -126,8 +127,8 @@ def plot_model_metrics(plot_data_path, cancer_types, tcga_abbrev, dataset_names)
         auroc = eval(plot_data[dataset_name]['AUROC'])
         aupr = eval(plot_data[dataset_name]['AUPR'])
 
-        for i, cancer in enumerate(cancer_types.columns, start=1):
-            proportion = cancer_types[cancer].mean()
+        for i, cancer in enumerate(disease_types.columns, start=1):
+            proportion = disease_types[cancer].mean()
 
             plot_confidence_interval(i+offset, auroc[cancer], color=color, axes=ax[0]) #AUROC plot
             plot_confidence_interval(i+offset, aupr[cancer], color=color, axes=ax[1]) #AUPR plot

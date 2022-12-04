@@ -33,7 +33,7 @@ def main(targets):
         # X
         filtered_feature_table = build_features.relevant_feature_data(metadata_table, feature_table, 'test')
         # target - Y
-        disease_types_count = build_features.disease_type_count(metadata_table)
+        disease_types = build_features.disease_type_count(metadata_table)
         # training model
         with open("config/gbc-model-params.json") as fh:
             gbc_model_params = json.load(fh)
@@ -46,11 +46,11 @@ def main(targets):
         
         gbc_model = train_model.init_gbc_model(**gbc_model_params)
         skf = train_model.init_skf(**skf_params)
-        auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table[0], disease_types_count, gbc_model, skf)
+        auroc_scores, aupr_scores = train_model.model_predict(filtered_feature_table[0], disease_types, gbc_model, skf)
         plot_data['test'] = (auroc_scores, aupr_scores)
         
         plot_data_path = visualize.save_plot_data(plot_data)
-        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev, ['test'])
+        visualize.plot_model_metrics(plot_data_path, disease_types, tcga_abbrev, ['test'])
 
         return 
 
@@ -76,7 +76,7 @@ def main(targets):
         # X (three datasets)
         filtered_feature_tables = build_features.relevant_feature_table_samples(filtered_metadata, datasets)
         # Target - Y
-        disease_types_count = build_features.disease_type_count(filtered_metadata)
+        disease_types = build_features.disease_type_count(filtered_metadata)
         
         with open("config/gbc-model-params.json") as fh:
             gbc_model_params = json.load(fh)
@@ -88,19 +88,19 @@ def main(targets):
         for dataset, dataset_name in filtered_feature_tables:
             gbc_model = train_model.init_gbc_model(**gbc_model_params)
             skf = train_model.init_skf(**skf_params)
-            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types_count, gbc_model, skf)
+            auroc_scores, aupr_scores = train_model.model_predict(dataset, disease_types, gbc_model, skf)
             plot_data[dataset_name] = (auroc_scores, aupr_scores)
         
         plot_data_path = visualize.save_plot_data(plot_data)
         # question about lablels
-        visualize.plot_model_metrics(plot_data_path, disease_types_count, tcga_abbrev,['Species high coverage','Species ∩ WIS','Species decontaminated'])
+        visualize.plot_model_metrics(plot_data_path, disease_types, tcga_abbrev,['Species high coverage','Species ∩ WIS','Species decontaminated'])
 
         return 
         
     if 'clean' in targets:
         try:
             os.remove('final_figure.png')
-        except OSError as e:  ## if failed, report it back to the user ##
+        except OSError as e: 
             print ("Error: %s - %s." % (e.filename, e.strerror))
         try:
             shutil.rmtree("data/temp")
