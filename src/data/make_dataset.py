@@ -11,6 +11,17 @@ def read_fungi_file(path):
     """
     return pd.read_csv(path, sep="\t",header=0,index_col="sampleid")
 
+def read_tcga_abbrev_file(tcga_abbrev_path):
+    """Read TCGA abbrev file
+
+    Args:
+        path (String): Path of TCGA abbrevation file
+
+    Returns:
+        DataFrame: Dataframe of TCGA cancer abbreviations
+    """
+    return pd.read_csv(tcga_abbrev_path, index_col='dz')
+
 def read_fungi_data(metadata_path, tcga_abbrev_path, high_coverage_path, wis_intersect_path, decontaminated_path):
     """Reads Fungi Feature Tables, Metadata and TCGA Abbrev Files
 
@@ -33,13 +44,4 @@ def read_fungi_data(metadata_path, tcga_abbrev_path, high_coverage_path, wis_int
     
     return (metadata_df, tcga_abbrev_df, high_coverage_df, wis_intersect_df, decontaminated_df)
 
-def read_tcga_abbrev_file(tcga_abbrev_path):
-    """Read TCGA abbrev file
 
-    Args:
-        path (String): Path of TCGA abbrevation file
-
-    Returns:
-        DataFrame: Dataframe of TCGA cancer abbreviations
-    """
-    return pd.read_csv(tcga_abbrev_path, index_col='dz')

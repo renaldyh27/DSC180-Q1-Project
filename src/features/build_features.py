@@ -16,7 +16,7 @@ def filter_sample_type(fungi_metadata, sample_type):
     # grab needed columns
     fungi_metadata = fungi_metadata[fungi_metadata_cols] 
     
-    #filter by given sample_type
+    # filter by given sample_type
     fungi_metadata = fungi_metadata[fungi_metadata['sample_type'] == sample_type]
 
     # drop cancers with fewer than 20 samples
@@ -47,18 +47,17 @@ def relevant_feature_data(fungi_metadata, feature_table, feature_table_name):
     Args:
         fungi_metadata (DataFrame): Dataframe of fungi metadata
         feature_table (DataFrame): Dataframe of feature table
-        feature_table_name (String): Name of feature table
+        feature_table_name (String): Name of feature table/dataset
 
     Returns:
-        DataFrame: Feature table containing relevant samples
-        String: Feature table name
+        (DataFrame, String): Feature table containing relevant samples and feature table name
     """
     filter_df = feature_table.filter(items = fungi_metadata.index, axis = 0)
     filter_df.to_csv("./data/temp/" + feature_table_name + "_filtered_samples.csv")
     return filter_df, feature_table_name
 
 def relevant_feature_table_samples(fungi_metadata, datasets):
-    """Filter all feature tables for relevant samples
+    """Filter all feature tables(datasets) for relevant samples
 
     Args:
         fungi_metadata (DataFrame): Dataframe of metadata

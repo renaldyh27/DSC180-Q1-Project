@@ -92,7 +92,7 @@ def main(targets):
             plot_data[dataset_name] = (auroc_scores, aupr_scores)
         
         plot_data_path = visualize.save_plot_data(plot_data)
-        # question about lablels
+    
         visualize.plot_model_metrics(plot_data_path, disease_types, tcga_abbrev,['Species high coverage','Species ∩ WIS','Species decontaminated'])
 
         return 

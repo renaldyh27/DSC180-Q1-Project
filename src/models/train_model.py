@@ -3,8 +3,6 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import roc_auc_score
 
-import numpy as np
-
 def model_predict(dataset, disease_types, gbc_model, skf_validator):
     """Take in as input the cleaned datasets of the features(X) and one-hot encoded cancer types/targets(Y)
        then perform 10-fold validation split and use them to train the model.
@@ -23,9 +21,10 @@ def model_predict(dataset, disease_types, gbc_model, skf_validator):
 
     clf = gbc_model
     
-    total_auroc_data = {} #all scores for all cancers, for plotting
+    total_auroc_data = {} # all scores for all cancers, for plotting
     total_aupr_data = {}
     
+    # loop through all cancer types
     for i, cancer in enumerate(disease_types.columns, start=1):
         X = dataset
         y = disease_types[cancer]
