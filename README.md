@@ -4,7 +4,7 @@ In this study, we perform a pan-cancer analysis on patients’ tissue to charact
 ## Retrieving the data locally:
 (1) Download the data files from the following Google Drive: https://drive.google.com/drive/u/0/folders/10fizMmiwPm-ziLHgRkqbN7f0nO7SR-cZ
 
-(2) Edit the file: config/data-params.json to include the paths of the downloaded data in the value of their correponding keys which is indicated by their file names
+(2) Place files in `raw/data` directory
 
 ## Running the Project:
 * To revert to a clean repository, from the project root dir, run `python run.py clean`
